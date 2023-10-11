@@ -25,7 +25,7 @@ if (cluster.isPrimary) {
                 serialization: "advanced",
             });
             logger.info(`Estoy despues de hacer el cluster en setupPrimary`);
-            const cpuCount = os.cpus().length;
+            let cpuCount = os.cpus().length;
             logger.info(`CPU count: ---- ${cpuCount}`);
             cpuCount = cpuCount - 10;
             logger.info(`CPU count: ---- ${cpuCount}`);
