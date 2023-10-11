@@ -13,18 +13,25 @@ if (cluster.isPrimary) {
     logger.info(`Primary ${process.pid} is running`);
     import("./app.js")
         .then((module) => {
+            logger.info(`Estoy dentro de APP MODULE`);
             const app = module.default;
             const webServer = app.listen(3000);
             setupMaster(webServer, {
                 loadBalancingMethod: "least-connection",
             });
             setupPrimary();
+            logger.info(`Estoy despues de invocar el setupPrimary`);
             cluster.setupPrimary({
                 serialization: "advanced",
             });
+            logger.info(`Estoy despues de hacer el cluster en setupPrimary`);
             const cpuCount = os.cpus().length;
+            logger.info(`CPU count: ---- ${cpuCount}`);
+
             for (let i = 0; i < cpuCount; i++) {
                 cluster.fork();
+                logger.info(`CPU fork number${i}`);
+
             }
             cluster.on("exit", (worker) => {
                 logger.error(`Worker ${worker.process.pid} died`);
