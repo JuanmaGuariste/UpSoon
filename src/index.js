@@ -32,7 +32,7 @@ if (cluster.isPrimary) {
             
 
             // for (let i = 0; i < cpuCount; i++) {
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 8; i++) {
                 cluster.fork();
                 logger.info(`CPU fork number${i}`);
 
