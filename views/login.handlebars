@@ -1,0 +1,37 @@
+<section class='container'>
+	<div class='row bg-light login-section'>
+		<div class='col-4 d-flex align-items-center justify-content-center'>
+			<a class="" href="#">
+				<img src="/img/letraU.png" alt="Logo" width="256" height="256" class="d-inline-block align-text-top">
+			</a>
+		</div>
+		<div class='col-8' style='padding: 50px 20px;'>
+			<h1>Ingresar</h1>
+			<form action='/api/users/login' method='post'>
+				<div class='row'>
+					<div class='col-12'>
+						<input type='email' class='form-control' placeholder='Correo Electronico' aria-label='Correo'
+							name='email' />
+					</div>
+					<div class='col-12'>
+						<input type='password' class='form-control' placeholder='Contraseña' aria-label='Contraseña'
+							name='password' />
+					</div>
+					<button type='submit' class='btn btn-primary col-12 my-2'>Ingresar</button>
+					<a 
+						href='/api/users/github'
+						type='submit'
+						class='btn btn-primary col-12 btn-github my-2'
+					>Ingresar con GitHub</a>
+					<button type='button' class='btn btn-primary col-12 my-2'
+						onclick="window.location.href='/register'">Registrarse</button>
+						<button type='button' class="btn btn-primary col-12 my-2 "
+                    onclick="restorePassword()">Olvidé mi contraseña</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+<script src='/js/main.js'></script>

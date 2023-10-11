@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Compras</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="body-purchase">
+    <div class="container-purchase">
+        <h1 class="h1-purchase">Historial de Compras</h1>
+        <table class="purchase-history-table">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Amount</th>
+                    <th>Fecha de compra</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{!-- {{#each tickets}} --}}
+                <tr>
+                    <td>{{tickets.code}}</td>
+                    <td>{{tickets.amount}}</td>
+                    <td>{{tickets.purchase_datetime}}</td>
+                </tr>
+                {{!-- {{/each}} --}}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

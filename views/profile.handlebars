@@ -1,0 +1,31 @@
+<section class='container'>
+	<div class='row bg-light login-section'>
+		<div class='col-4'>
+
+			{{#if user.img}}
+			<img src='{{user.img}}' alt='logo' class='img-fluid my-2' />
+			{{else}}
+			<img src="https://cdn.pixabay.com/photo/2017/02/25/22/04/user-icon-2098873_1280.png" alt='logo'
+				class='img-fluid my-2' style="height: 90%;" />
+			{{/if}}
+		</div>
+		<div class='col-8' style='padding: 50px 20px;'>
+			<h1>Hola, {{user.first_name}} {{user.last_name}}</h1>
+			<p>Datos personales</p>
+			<ul>
+				{{#if user.email}}<li><b>Correo: </b>{{user.email}}</li>{{/if}}
+				{{#if user.age}}<li><b>Edad: </b>{{user.age}}</li>{{/if}}
+				{{#if user.rol}}<li><b>Rol: </b>{{user.rol}}</li>{{/if}}
+			</ul>
+			<form action="/api/users/{{user._id}}/documents" method="post" enctype="multipart/form-data">
+				<input type="file" class="form-control" name="profile" id="profile">
+				<button type="submit">Subir imagen de perfil</button>
+			</form>
+			<a class="btn btn-warning my-2" href="./premium">Quiero ser usuario premium</a>
+			<button class="btn btn-danger my-2" onclick="notPremium('{{user._id}}')">Quiero dejar de ser premium</button>
+		</div>
+	</div>
+</section>
+
+<script src="/js/responses_manager.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>

@@ -1,0 +1,35 @@
+<div class="form-container">
+    <div class="form-wrapper">
+        <h2 class="form-title">Agregar un nuevo producto:</h2>
+        <form id="add-product-form" class="product-form">
+            <input type="text" required id="title" name="title" placeholder="Título" />
+            <input type="text" required id="description" name="description" placeholder="Descripción" />
+            <input type="text" required id="category" name="category" placeholder="Categoría" />
+            <input type="number" required id="price" name="price" placeholder="Precio" />
+            <input type="text" required id="code" name="code" placeholder="Código" />
+            <input type="number" required id="stock" name="stock" placeholder="Stock" />
+            <select required id="status" name="status" placeholder="Estado">
+                <option value="true">true</option>
+                <option value="false">false</option>
+            </select>
+            <button id="send2" class="button_prod" onclick="sendProduct('{{user._id}}')">Agregar producto</button>
+        </form>
+    </div>
+
+    <div class="form-wrapper">
+        <h2 class="form-title">Eliminar un producto por ID:</h2>
+        <form id="delete-product-form" class="product-form">
+            <input type="text" required id="id" name="id" placeholder="ID" />
+            <button id="send" class="button_prod" onclick="deleteProduct()">Eliminar</button>
+        </form>
+    </div>
+</div>
+
+<div id="historial">
+    <div id="totalProducts" class="product-grid"></div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+<script src='/socket.io/socket.io.js'></script>
+<script src='/js/main.js'></script>

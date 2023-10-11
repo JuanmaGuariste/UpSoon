@@ -1,0 +1,30 @@
+<div><br /></div>
+<div class='container'>
+    <button onclick="createTicket('{{user.cart}}')" class='btn btn-success col-12 my-3'>Realizar compra</button>
+    <a class="btn btn-warning col-12" href="../prevPurchase">Ver compras previas</a>
+
+    <div class='row'>
+        {{#each cart.products}}
+        <div class="card my-3 mx-1" style="width: 18rem;">
+            <figure class="figure">
+                <img src="https://dummyimage.com/300" class="figure-img img-fluid rounded" alt="Imagen del producto.">
+            </figure>
+            <div class="card-body">
+                <h5 class="card-title">{{this.product.title}}</h5>
+                <p class="card-text">{{this.product.description}}</p>
+                <p class="card-text">Categoría: {{this.product.category}}</p>
+                <p class="card-text">Stock disponible: {{this.product.stock}}</p>
+                <p class="card-text">Precio: ${{this.product.price}}</p>
+                <p class="card-text">Cantidad seleccionada: {{this.cant}}</p>
+                <button class="btn btn-danger"
+                    onclick="deleteProductFromCart('{{this.product._id}}', '{{../user.cart}}')">Quitar
+                    del
+                    carrito</button>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+<script src='/js/main.js'></script>

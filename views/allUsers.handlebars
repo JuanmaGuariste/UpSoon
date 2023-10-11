@@ -1,0 +1,50 @@
+<div><br /></div>
+<div class='container-users'>
+    <div class='row d-flex justify-content-center'>
+        {{#each users}}
+        <div class="card-user">
+            <div class="card-user-body">
+                <h5 class="card-user-title"><strong>Nombre:</strong> <span class="text-left">{{this.first_name}}</span></h5>
+                <p class="card-user-text text-left"><strong>Apellido:</strong> <span class="text-left">{{this.last_name}}</span></p>
+                <p class="card-user-text text-left"><strong>Email:</strong> <span class="text-left">{{this.email}}</span></p>
+                <p class="card-user-text text-left"><strong>Rol:</strong> <span class="text-left">{{this.rol}}</span></p>
+                <p class="card-user-text text-left"><strong>Última conexión:</strong> <span class="text-left">{{this.last_connection}}</span></p>
+                <p class="card-user-text text-left"><strong>ID:</strong> <span class="text-left">{{this._id}}</span></p>
+            </div>
+            <button class="btn btn-warning my-2" style="width:100%"
+                onclick="setUser('{{this._id}}', 'premium')">Establecer como premium</button>
+            <button class="btn btn-warning my-2" style="width:100%"
+                onclick="setUser('{{this._id}}', 'admin')">Establecer como administrador</button>
+            <button class="btn btn-warning my-2" style="width:100%" onclick="setUser('{{this._id}}', 'user')">Establecer
+                como usuario </button>
+            <button class="btn btn-danger my-2" style="width:100%" onclick="deleteUser('{{this._id}}')">Eliminar
+                usuario</button>
+        </div>
+        {{/each}}
+    </div>
+</div>
+{{!-- 
+<div class='container-users'>
+    <div class='row d-flex justify-content-center'>
+        {{#each users}}
+        <div class="card-user">
+            <div class="card-user-body">
+                <h5 class="card-user-title"><strong>Nombre:</strong> <span class="text-left">{{this.first_name}}</span>
+                </h5>
+                <p class="card-user-text"><strong>Apellido:</strong> <span class="text-left">{{this.last_name}}</span>
+                </p>
+                <p class="card-user-text"><strong>Email:</strong> <span class="text-left">{{this.email}}</span></p>
+                <p class="card-user-text"><strong>Rol:</strong> <span class="text-left">{{this.rol}}</span></p>
+                <p class="card-user-text"><strong>Última conexión:</strong> <span
+                        class="text-left">{{this.last_connection}}$</span></p>
+                <p class="card-user-text"><strong>ID:</strong> <span class="text-left">{{this._id}}$</span></p>
+            </div>
+            <!-- Botones aquí -->
+        </div>
+        {{/each}}
+    </div>
+</div> --}}
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+<script src='/js/main.js'></script>

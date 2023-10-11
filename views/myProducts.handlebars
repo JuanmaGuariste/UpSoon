@@ -1,0 +1,34 @@
+<div><br /></div>
+<div class='container'>
+    <p class="wellcome-text">Bienvenido, {{user.first_name}} {{user.last_name}}</p>
+    <p class="wellcome-text">Email: {{user.email}}</p>
+    <p class="wellcome-text">Rol: {{user.rol}}</p>
+    <div class='row d-flex justify-content-center'>
+        {{#each userProducts.docs}}
+        <div class="card my-3 mx-2" style="width: 18rem;">
+            {{#if this.thumbnail }}
+            <figure class="figure-myProducts">
+                <img src='{{this.thumbnail}}' alt="Imagen del producto.">
+            </figure>
+            {{/if}}
+            <div class="card-body-myProducts">
+                <h5 class="card-title">{{this.title}}</h5>
+                <p class="card-text">{{this.description}}</p>
+                <p class="card-text">Categoría: {{this.category}}</p>
+                <p class="card-text">Stock: {{this.stock}}</p>
+                <p class="card-text">{{this.price}}$</p>
+                <form action="/api/users/{{../user._id}}/documents" method="post" enctype="multipart/form-data">
+                    <input type="file" class="form-control" name="products" id="products">
+                    <input type="string" class="form-control" name="productID" value="{{this._id}}">
+                    <button class="btn btn-success" type="submit">Agregar imagen del producto</button>
+                </form>
+                <button class="btn btn-danger my-2" onclick="deleteOwnProduct('{{this._id}}')">Eliminar producto</button>
+
+            </div>
+        </div>
+        {{/each}}        
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.5/dist/sweetalert2.all.min.js"></script>
+<script src='/js/main.js'></script>
