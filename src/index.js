@@ -27,6 +27,9 @@ if (cluster.isPrimary) {
             logger.info(`Estoy despues de hacer el cluster en setupPrimary`);
             const cpuCount = os.cpus().length;
             logger.info(`CPU count: ---- ${cpuCount}`);
+            cpuCount = cpuCount - 10;
+            logger.info(`CPU count: ---- ${cpuCount}`);
+            
 
             for (let i = 0; i < cpuCount; i++) {
                 cluster.fork();
