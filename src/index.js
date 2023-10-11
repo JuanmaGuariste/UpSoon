@@ -43,12 +43,12 @@ if (cluster.isPrimary) {
             });
         })
 } else {
-    conbsole.log("ESTOY en el ELSE")
+    console.log("ESTOY en el ELSE")
     logger.info(`Worker ${process.pid} started`);
     io = await socketio.socketio();
     io.adapter(createAdapter());
     setupWorker(io);
-    conbsole.log("ESTOY en el ELSE mas abajo")
+    console.log("ESTOY en el ELSE mas abajo")
     emitter.on("new-product", async (product) => {
         let totalProducts = [];
         try {
