@@ -1,6 +1,5 @@
 import ticketsService from '../services/tickets.service.js';
 import nodemailer from 'nodemailer';
-import environment from '../config/environment.js';
 import usersService from '../services/users.service.js';
 import { logger } from '../middleware/logger.middleware.js';
 import { generateJWTToken } from '../config/passport.config.js';

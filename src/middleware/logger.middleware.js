@@ -1,5 +1,4 @@
 import winston from 'winston';
-import environment from '../config/environment.js';
 import customLevelsOptions from '../utils/customLevelsOptions.js';
 
 let logger = winston.createLogger({

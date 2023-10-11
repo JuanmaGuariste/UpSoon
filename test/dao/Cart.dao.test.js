@@ -2,7 +2,6 @@ import Assert from 'assert';
 import cartDAO from '../../src/dao/mongo/CartDAO.js';
 import productDAO from '../../src/dao/mongo/ProductDAO.js';
 import mongoose from 'mongoose';
-import environment from '../../src/config/environment.js';
 import chai from 'chai';
 
 await mongoose.connect(process.env.MONGO_URL);

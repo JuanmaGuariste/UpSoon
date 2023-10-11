@@ -11,7 +11,6 @@ import { inicializePassport } from './config/passport.config.js';
 import passport from 'passport';
 import cookieParser from 'cookie-parser';
 import sessionsRouter from './routers/sessions.router.js';
-import environment from './config/environment.js';
 import { mailsRouter } from './routers/mails.router.js';
 import { mockingProductsRouter } from './routers/mockingproducts.router.js';
 import { errorsManagerMiddleware } from './middleware/errorsManager.middleware.js';

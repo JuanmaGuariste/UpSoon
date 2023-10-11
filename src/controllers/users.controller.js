@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from "bcrypt";
-import environment from "../config/environment.js";
 
 import usersService from '../services/users.service.js';
 import productsService from '../services/products.service.js';

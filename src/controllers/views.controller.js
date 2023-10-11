@@ -1,7 +1,6 @@
 import productsService from "../services/products.service.js";
 import cartsService from "../services/carts.service.js";
 import usersService from "../services/users.service.js";
-import environment from '../config/environment.js';
 import ticketsService from "../services/tickets.service.js";
 import Swal from 'sweetalert2';
 
