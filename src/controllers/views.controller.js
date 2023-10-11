@@ -149,7 +149,7 @@ export default class ViewsController {
         let tokenHash = req.params.token;
         try {
             const jwt = await import('jsonwebtoken');
-            const secretKey = environment.SECRET_KEY;
+            const secretKey = process.env.SECRET_KEY;
 
             jwt.default.verify(tokenHash, secretKey, async (err, decoded) => {
                 if (err) {

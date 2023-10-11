@@ -14,7 +14,7 @@ const LocalStrategy = local.Strategy;
 
 const generateJWTToken = async (payload) => {
     try {
-        const secretKey = environment.SECRET_KEY;
+        const secretKey = process.env.SECRET_KEY;
         const expiresIn = '1h';
         const jwt = await import('jsonwebtoken')
         const token = jwt.default.sign(payload, secretKey, { expiresIn });
@@ -26,9 +26,9 @@ const generateJWTToken = async (payload) => {
 
 const inicializePassport = () => {
     passport.use("github", new GitHubStrategy({
-        clientID: environment.GITHUB_CLIENT_ID,
-        clientSecret: environment.GITHUB_CREDENTIAL,
-        callbackURL: environment.GITHUB_URL
+        clientID: process.env.GITHUB_CLIENT_ID,
+        clientSecret: process.env.GITHUB_CREDENTIAL,
+        callbackURL: process.env.GITHUB_URL
     }, async (accessToken, refreshToken, profile, done) => {
         try {
             let user = await usersService.getUserByEmail(profile._json.email);

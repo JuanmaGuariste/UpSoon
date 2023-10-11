@@ -40,14 +40,14 @@ inicializePassport(app);
 
 app.use(passport.initialize());
 
-mongoose.connect(environment.MONGO_URL);
+mongoose.connect(process.env.MONGO_URL);
 
 const spects = swaggerJsDoc(swaggerOptions);
 
 app.use(
 	session({
 		store: MongoStore.create({
-			mongoUrl: environment.MONGO_URL,
+			mongoUrl: process.env.MONGO_URL,
 			mongoOptions: {
 				useNewUrlParser: true,
 			},

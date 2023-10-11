@@ -12,8 +12,8 @@ const socketio = async () => {
                 import("./app.js")
                     .then((module) => {
                         const app = module.default;
-                        const webServer = app.listen(environment.PORT, () => {
-                            logger.info(`Escuchando puerto ${environment.PORT}`);
+                        const webServer = app.listen(process.env.PORT, () => {
+                            logger.info(`Escuchando puerto ${process.env.PORT}`);
                         });
                         io = new Server(webServer);
                         let totalProducts = [];
