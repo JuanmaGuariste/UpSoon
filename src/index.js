@@ -32,7 +32,7 @@ if (cluster.isPrimary) {
             
 
             // for (let i = 0; i < cpuCount; i++) {
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 7; i++) {
                 cluster.fork();
                 logger.info(`CPU fork number${i}`);
 
@@ -45,17 +45,21 @@ if (cluster.isPrimary) {
 } else {
     console.log("ESTOY en el ELSE")
     logger.info(`Worker ${process.pid} started`);
-    io = await socketio.socketio();
-    io.adapter(createAdapter());
-    setupWorker(io);
-    console.log("ESTOY en el ELSE mas abajo")
-    emitter.on("new-product", async (product) => {
-        let totalProducts = [];
-        try {
-            totalProducts = await productsService.getAllProducts()
-            io.emit('totalProducts', JSON.stringify(totalProducts));
-        } catch (err) {
-            logger.error(err)
-        }
-    })
+    try{
+        io = await socketio.socketio();
+        io.adapter(createAdapter());
+        setupWorker(io);
+        console.log("ESTOY en el ELSE mas abajo")
+        emitter.on("new-product", async (product) => {
+            let totalProducts = [];
+            try {
+                totalProducts = await productsService.getAllProducts()
+                io.emit('totalProducts', JSON.stringify(totalProducts));
+            } catch (err) {
+                logger.error(err)
+            }
+        })
+    } catch (err) {
+        logger.error(err)
+    }
 }
