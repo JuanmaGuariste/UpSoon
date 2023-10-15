@@ -88,7 +88,7 @@ export default class TicketsController {
 				products: products
 			}
 			ticket = await ticketsService.addTicket(ticket);
-			await fetch(`http://localhost:8080/api/mails/ticket/${ticket._id}/`, {
+			await fetch(`https://upsoona.up.railway.app/api/mails/ticket/${ticket._id}/`, {
 				method: 'GET'
 			});
 			res.status(201).send({ status: "success", payload: { "ticket": ticket } });

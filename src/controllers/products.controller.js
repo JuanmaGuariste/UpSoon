@@ -62,7 +62,7 @@ export default class ProductsController {
 			if (user.rol == "admin") {
 				// respuesta = await productsService.deleteProduct(id);
 				if (productOwner) {
-					await fetch(`http://localhost:8080/api/mails/deleteproduct/${id}/`, {
+					await fetch(`https://upsoona.up.railway.app/api/mails/deleteproduct/${id}/`, {
 						method: 'GET'
 					});
 					respuesta = true

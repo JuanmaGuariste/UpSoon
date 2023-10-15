@@ -1,7 +1,7 @@
 const socket = io();
 
 async function createCart() {
-	return await fetch('http://localhost:8080/api/carts',
+	return await fetch('https://upsoona.up.railway.app/api/carts',
 		{
 			method: 'POST'
 		})
@@ -18,7 +18,7 @@ async function createCart() {
 }
 
 async function addProductToCart(pid, cid) {
-	const response = await fetch(`http://localhost:8080/api/carts/${cid}/product/${pid}`, {
+	const response = await fetch(`https://upsoona.up.railway.app/api/carts/${cid}/product/${pid}`, {
 		method: 'POST'
 	});
 	if (response.status === 403) {
@@ -42,7 +42,7 @@ async function addProductToCart(pid, cid) {
 }
 
 async function deleteProductFromCart(pid, cid) {
-	const response = await fetch(`http://localhost:8080/api/carts/${cid}/product/${pid}`, {
+	const response = await fetch(`https://upsoona.up.railway.app/api/carts/${cid}/product/${pid}`, {
 		method: 'DELETE'
 	});
 
@@ -73,7 +73,7 @@ async function sendProduct(userId) {
 	product.stock = document.getElementById('stock').value;
 	product.status = document.getElementById('status').value;
 	product.owner = userId;
-	let response = await fetch(`http://localhost:8080/api/products`, {
+	let response = await fetch(`https://upsoona.up.railway.app/api/products`, {
 		method: 'POST',
 		body: JSON.stringify(product),
 		headers: {
@@ -99,13 +99,13 @@ async function sendProduct(userId) {
 
 async function deleteProduct() {
 	const prodId = document.getElementById('id').value;
-	let response = await fetch(`http://localhost:8080/api/products/${prodId}`, {
+	let response = await fetch(`https://upsoona.up.railway.app/api/products/${prodId}`, {
 		method: 'DELETE'
 	})
 }
 
 async function deleteOwnProduct(pid) {
-	let response = await fetch(`http://localhost:8080/api/products/${pid}`, {
+	let response = await fetch(`https://upsoona.up.railway.app/api/products/${pid}`, {
 		method: 'DELETE'
 	})
 	if (response.ok) {
@@ -125,7 +125,7 @@ async function deleteOwnProduct(pid) {
 }
 
 async function deleteUser(uid) {
-	let response = await fetch(`http://localhost:8080/api/users/${uid}`, {
+	let response = await fetch(`https://upsoona.up.railway.app/api/users/${uid}`, {
 		method: 'DELETE'
 	})
 	if (response.ok) {
@@ -145,7 +145,7 @@ async function deleteUser(uid) {
 }
 
 async function setUser(uid, user) {
-	const response = await fetch(`http://localhost:8080/api/users/${uid}/rol/${user}`, {
+	const response = await fetch(`https://upsoona.up.railway.app/api/users/${uid}/rol/${user}`, {
 		method: 'POST'
 	});
 	if (response.ok) {
@@ -165,7 +165,7 @@ async function setUser(uid, user) {
 }
 
 async function createTicket(cid) {
-	const response = await fetch(`http://localhost:8080/api/carts/${cid}/purchase`, {
+	const response = await fetch(`https://upsoona.up.railway.app/api/carts/${cid}/purchase`, {
 		method: 'POST'
 	});
 	if (response) {
@@ -196,7 +196,7 @@ async function restorePassword() {
 	})
 
 	if (email) {
-		const response = await fetch(`http://localhost:8080/api/mails/${email}`, {
+		const response = await fetch(`https://upsoona.up.railway.app/api/mails/${email}`, {
 			method: 'POST'
 		});
 
