@@ -31,7 +31,8 @@ export default class MailsController {
         `;
             const mailOptions = {
                 from: `UpSoon Ecommerce <${process.env.EMAIL}>`,
-                to: process.env.EMAIL,
+                // to: process.env.EMAIL
+                to: ticket.purchaser,
                 subject: 'UpSoon - Ticket de compra',
                 html: htmlContent,
                 // attachments: [{
@@ -70,8 +71,8 @@ export default class MailsController {
         `;
             const mailOptions = {
                 from: `UpSoon Ecommerce <${process.env.EMAIL}>`,
-                to: process.env.EMAIL,//TODO: cambiar por user mail
-                // to: user.EMAIL,
+                // to: process.env.EMAIL,
+                to: user.email,
                 subject: 'UpSoon - Producto eliminado',
                 html: htmlContent,
                 // attachments: [{
@@ -116,8 +117,8 @@ export default class MailsController {
                             `;
                 const mailOptions = {
                     from: `UpSoon Ecommerce <${process.env.EMAIL}>`,
-                    to: process.env.EMAIL, //TODO: cambiar por user mail
-                    // to: user.EMAIL, 
+                    // to: process.env.EMAIL, 
+                    to: user.email, 
                     subject: 'UpSoon - Restauración de contraseña',
                     html: htmlContent,
                 };
@@ -168,8 +169,8 @@ export default class MailsController {
         `;
             const mailOptions = {
                 from: `UpSoon Ecommerce <${process.env.EMAIL}>`,
-                to: process.env.EMAIL,//TODO: cambiar por user mail
-                // to: user.EMAIL,
+                // to: process.env.EMAIL,
+                to: user.email,
                 subject: 'UpSoon - Eliminado de cuenta por inactividad',
                 html: htmlContent,
                 // attachments: [{

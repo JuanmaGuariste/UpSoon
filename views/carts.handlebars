@@ -7,7 +7,7 @@
         {{#each cart.products}}
         <div class="card my-3 mx-1" style="width: 18rem;">
             <figure class="figure">
-                <img src="https://dummyimage.com/300" class="figure-img img-fluid rounded" alt="Imagen del producto.">
+                <img src={{this.product.thumbnail}} class="figure-img img-fluid rounded" alt="Imagen del producto.">
             </figure>
             <div class="card-body">
                 <h5 class="card-title">{{this.product.title}}</h5>

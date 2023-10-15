@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial de Compras</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body class="body-purchase">
     <div class="container-purchase">
         <h1 class="h1-purchase">Historial de Compras</h1>
-        <table class="purchase-history-table">
-            <thead>
-                <tr>
-                    <th>Code</th>
-                    <th>Amount</th>
-                    <th>Fecha de compra</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{!-- {{#each tickets}} --}}
-                <tr>
-                    <td>{{tickets.code}}</td>
-                    <td>{{tickets.amount}}</td>
-                    <td>{{tickets.purchase_datetime}}</td>
-                </tr>
-                {{!-- {{/each}} --}}
-            </tbody>
-        </table>
+        {{#each ticketInfo}}
+        <div class="ticket">
+            <div class="ticket-info">
+                <p class="ticket-code">Código: {{this.code}}</p>
+                <p class="ticket-amount">Monto: ${{this.amount}}</p>
+                <p class="ticket-date">Fecha de Compra: {{this.purchase_datetime}}</p>
+            </div>
+            <table class="purchase-history-table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio [$]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each this.products}}
+                    <tr>
+                        <td>{{this.title}}</td>
+                        <td>{{this.cant}}</td>
+                        <td>{{this.price}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        {{/each}}
     </div>
 </body>
 </html>

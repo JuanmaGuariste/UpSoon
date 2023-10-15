@@ -17,4 +17,15 @@ export default class TicketsRepository {
     async addTicket(ticket) {
         return await this.dao.addTicket(ticket);
     }
+
+    async getAllTicketsByEmail(email) {
+        let tickets = await this.dao.getTickets();
+        let filteredTickets = [];        
+        tickets.forEach(ticket => {
+            if (ticket.purchaser == `${email}`){
+                filteredTickets.push(ticket)
+            }
+        });
+        return filteredTickets
+    }
 }

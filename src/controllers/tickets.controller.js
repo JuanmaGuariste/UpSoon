@@ -67,11 +67,16 @@ export default class TicketsController {
 				}
 			}
 
-			let productsID =[];
+			let products =[];
+			let prod = {}
 
 			productsOk.forEach(el => {
 				totalPrice += el.cant * el.price;
-				productsID.push(el._id);
+				prod = {
+					product: el._id,
+					cant: el.cant
+				}
+				products.push(prod);
 			})			
 			const timestamp = Date.now().toString();
 			const ticketCode = `TICKET-${timestamp}`;
@@ -80,7 +85,7 @@ export default class TicketsController {
 				code: ticketCode,
 				amount: totalPrice,
 				purchaser: user.email,
-				products: productsID
+				products: products
 			}
 			ticket = await ticketsService.addTicket(ticket);
 			await fetch(`http://localhost:8080/api/mails/ticket/${ticket._id}/`, {

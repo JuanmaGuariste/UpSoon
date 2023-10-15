@@ -10,7 +10,10 @@ async function createCart() {
 			return cart.payload._id;
 		})
 		.catch(error => {
-			console.error('Error al crear el carrito:', error);
+			Swal.fire({
+				title: 'Error al crear el carrito',
+				icon: 'error'
+			});
 		});
 }
 
@@ -160,7 +163,6 @@ async function setUser(uid, user) {
 		});
 	}
 }
-
 
 async function createTicket(cid) {
 	const response = await fetch(`http://localhost:8080/api/carts/${cid}/purchase`, {

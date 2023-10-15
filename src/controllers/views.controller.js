@@ -45,7 +45,7 @@ export default class ViewsController {
                 };
             } else if (user.rol == "admin") {
                 userProducts = products;
-            }          
+            }
             res.render('myProducts', {
                 userProducts,
                 user,
@@ -196,7 +196,7 @@ export default class ViewsController {
     async allUsers(req, res) {
         try {
             let users = await usersService.getAllUsers();
-            res.render('allUsers', {                
+            res.render('allUsers', {
                 users,
             });
         }
@@ -208,16 +208,35 @@ export default class ViewsController {
     async prevPurchase(req, res) {
         let user = req.user
         try {
-             let  tickets = await ticketsService.getTicketByEmail(user.email);
-             let products = []
-             let auxProduct;
-            //  for (let i=0; i<tickets.products.length; i++){
-            //      auxProduct = await productsService.getProductById(`${tickets.products[i]._id}`)
-            //      products.push(auxProduct)
-            //  }
-            res.render('prevPurchase', {                
-                 user,
-                 tickets,
+            let tickets = await ticketsService.getAllTicketsByEmail(user.email);
+            let products = []
+            let auxProduct = {};
+            let ticketInfo = []
+            let ticket = {}
+            let prodaux = {}
+            for (let i = 0; i < tickets.length; i++) {                
+                for (let j = 0; j < tickets[i].products.length; j++) {
+                    auxProduct = await productsService.getProductById(`${tickets[i].products[j].product}`)
+                    prodaux = {
+                        title: auxProduct.title,
+                        cant: tickets[i].products[j].cant,
+                        price: auxProduct.price,
+                    }              
+                    products.push(prodaux)
+                }
+                ticket = {
+                    code: tickets[i].code,
+                    purchase_datetime: tickets[i].purchase_datetime,
+                    amount: tickets[i].amount,
+                    products: products,
+                }
+                ticketInfo.push(ticket)
+                products = []
+                ticket = {} 
+            }
+            res.render('prevPurchase', {
+                user,
+                ticketInfo,
             });
         }
         catch (err) {
