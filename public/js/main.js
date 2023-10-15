@@ -18,7 +18,7 @@ async function createCart() {
 }
 
 async function addProductToCart(pid, cid) {
-	const response = await fetch(`https://upsoona.up.railway.app/api/carts/${cid}/product/${pid}`, {
+	const response = await fetch(`/api/carts/${cid}/product/${pid}`, {
 		method: 'POST'
 	});
 	if (response.status === 403) {
@@ -42,7 +42,7 @@ async function addProductToCart(pid, cid) {
 }
 
 async function deleteProductFromCart(pid, cid) {
-	const response = await fetch(`https://upsoona.up.railway.app/api/carts/${cid}/product/${pid}`, {
+	const response = await fetch(`${BASE_URL}/api/carts/${cid}/product/${pid}`, {
 		method: 'DELETE'
 	});
 
