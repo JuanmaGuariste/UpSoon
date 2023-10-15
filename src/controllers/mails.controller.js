@@ -112,7 +112,7 @@ export default class MailsController {
                                 <h1>Restauración de contraseña</h1>
                                 <p><strong>Hola,  ${user.first_name}. Hemos recibido tu solicitud de restauración de contraseña.</p>
                                 <p><strong>Haz click en el siguiente enlace para restablecer tu contraseña</strong></p>
-                                <p><a href="https://upsoona.up.railway.app/restore-password/uid/${user._id}/token/${token}" style="text-decoration: none; background-color: #007bff; color: #fff; padding: 5px 10px; border-radius: 5px;">Restaurar contraseña</a></p>
+                                <p><a href="/restore-password/uid/${user._id}/token/${token}" style="text-decoration: none; background-color: #007bff; color: #fff; padding: 5px 10px; border-radius: 5px;">Restaurar contraseña</a></p>
                                 <p><strong>Si no realizaste esta solicitud, puedes ignorar este correo.</p>                             
                             `;
                 const mailOptions = {

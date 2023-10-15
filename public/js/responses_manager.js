@@ -1,7 +1,7 @@
 async function sendInfo(uid) {
     try {
         const data = { rol: "premium" };
-        const response = await fetch(`https://upsoona.up.railway.app/api/users/premium/${uid}`, {
+        const response = await fetch(`/api/users/premium/${uid}`, {
             method: 'POST',           
             headers: {
                 'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ async function sendInfo(uid) {
 async function notPremium(uid) {
     try {
         const data = { rol: "user" };
-        const response = await fetch(`https://upsoona.up.railway.app/api/users/premium/${uid}`, {
+        const response = await fetch(`/api/users/premium/${uid}`, {
             method: 'POST',           
             headers: {
                 'Content-Type': 'application/json', 

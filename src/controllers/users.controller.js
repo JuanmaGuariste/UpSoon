@@ -27,7 +27,7 @@ export default class UsersController {
 			const limitDate = new Date(currentDate.getTime() - inactivityThreshold * 60000);
 			const inactiveUsers = users.filter(user => user.last_connection < limitDate);
 			for (const user of inactiveUsers) {
-				await fetch(`https://upsoona.up.railway.app/api/mails/inactiveUsers/${user._id}/`, {
+				await fetch(`/api/mails/inactiveUsers/${user._id}/`, {
 					method: 'GET'
 				});
 			}
